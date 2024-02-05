@@ -2,8 +2,10 @@ import Image from "next/image";
 import Navbar from '@/components/shared/navbar'
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-export default function Home() {
-  const auth = false;
+import {auth} from "@/auth"
+
+export default async function Home() {
+  const session = await auth();
   return (
     <main className="bg-[#fffc00]">
       <div className='min-h-screen flex flex-col items-center justify-center max-w-7xl mx-auto'>
@@ -18,7 +20,7 @@ export default function Home() {
               <p className='mt-2 text-lg font-semibold'>What are you waiting for?</p>
             </div>
             <Button asChild className='mt-4 bg-black text-white flex items-center rounded-lg gap-2 mx-auto md:mx-0'>
-              {!auth ?
+              {!session ?
                 (<Link href={'/login'} className="max-w-max">
                   <Image src='/logo.svg' alt="sanpchat logo" width={20} height={20} loading="lazy" />
                   Log in explore
