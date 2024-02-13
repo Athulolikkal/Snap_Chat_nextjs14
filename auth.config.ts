@@ -1,9 +1,10 @@
 import { Session } from "next-auth";
 import { NextRequest } from "next/server";
 
+
 export const authConfig={
     pages:{
-        signIn:"/login"
+        signIn:"/login",
     },
     providers:[],
     callbacks:{

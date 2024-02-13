@@ -2,8 +2,11 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import LogoutButton from "./logout-button"
+import { auth } from "@/auth";
 
 const Navbar = async () => {
+    const session = await auth();
+    console.log(session, "session value is ");
     return (
         <header className="w-full py-4 px-8 flex justify-between items-center">
             <Image src='/logo.svg' alt="snapchat logo" width={40} height={40} className="cursor-pointer" />
@@ -16,7 +19,7 @@ const Navbar = async () => {
             </div>
             <div className="flex space-x-2">
                 <Button className="bg-black text-white rounded-full p-3 text-xs md:text-sm">Watch tutorial</Button>
-               <LogoutButton />
+                {session && <LogoutButton />}
             </div>
         </header>
     )
