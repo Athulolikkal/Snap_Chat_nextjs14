@@ -6,7 +6,6 @@ import { auth } from "@/auth";
 
 const Navbar = async () => {
     const session = await auth();
-    console.log(session, "session value is ");
     return (
         <header className="w-full py-4 px-8 flex justify-between items-center">
             <Image src='/logo.svg' alt="snapchat logo" width={40} height={40} className="cursor-pointer" />
