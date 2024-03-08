@@ -3,8 +3,7 @@ import { readFileAsDataURL } from "@/lib/utils";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import ImagePreviewDialog from "./image-preview-dialog";
-// import SelectUserDialog from "./select-user-dialog";
-
+import SelectUserDialog from "./select-user-dialog";
 
 const ChatCamera = () => {
   const imageRef = useRef<HTMLInputElement>(null);
@@ -24,6 +23,7 @@ const ChatCamera = () => {
     setSelectedFile("");
     setStep(0);
   };
+ 
   return (
     <>
       <div className="aspect-[9/16] flex flex-col items-center justify-center h-[80%] bg-black rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10 border border-sigColorBgBorder mx-auto lg:mx-0">
@@ -57,14 +57,12 @@ const ChatCamera = () => {
           setStep={setStep}
         />
       ) : (
-        // <SelectUserDialog
-        //   selectedFile={selectedFile}
-        //   onClose={closeDialog}
-        //   onPrev={() => setStep(0)}
-        // />
-        <div>
-            
-        </div>
+      
+        <SelectUserDialog
+          selectedFile={selectedFile}
+          onClose={closeDialog}
+          onPrev={() => setStep(0)}
+        />
       )}
     </>
   );
